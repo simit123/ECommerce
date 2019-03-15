@@ -2,11 +2,14 @@ package kt.com.ecommerce.ui.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
+import kotlinx.android.synthetic.main.fragment_follow.*
 import kt.com.ecommerce.R
 import kt.com.ecommerce.base.BaseFragment
 import kt.com.ecommerce.mvp.Constract.FollowConstract
 import kt.com.ecommerce.mvp.presenter.FollowPresenter
+import kt.com.ecommerce.ui.adapter.FollowAdapter
 
 
 /**
@@ -18,9 +21,12 @@ class FollowFragment : BaseFragment(), FollowConstract.IFollowV {
     private val mPresenter by lazy {
         FollowPresenter()
     }
+    private var itemList = ArrayList<HomeBean.Issue.Item>()
 
-    override fun showFindData(data: List<HomeBean.Issue.Item>) {
+    private val mAdapter by lazy { FollowAdapter(activity!!,itemList) }
 
+    override fun showFindData(data: ArrayList<HomeBean.Issue.Item>) {
+        mAdapter.addData(data)
     }
 
 
@@ -54,8 +60,12 @@ class FollowFragment : BaseFragment(), FollowConstract.IFollowV {
     }
 
     override fun initView() {
-
+        initRecyclerView()
     }
 
+    private fun initRecyclerView(){
+        mRecyclerView.layoutManager = LinearLayoutManager(activity)
+        mRecyclerView.adapter = mAdapter
+    }
 
 }

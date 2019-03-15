@@ -9,7 +9,7 @@ import kt.com.ecommerce.base.IBaseView
  */
 class FollowConstract{
     interface IFollowV : IBaseView {
-        fun showFindData(data: List<HomeBean.Issue.Item>)
+        fun showFindData(data: ArrayList<HomeBean.Issue.Item>)
     }
 
     interface IFollowP : IBasePresenter<IFollowV> {

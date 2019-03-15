@@ -1,5 +1,6 @@
 package kt.com.ecommerce.api
 
+import com.hazz.kotlinmvp.mvp.model.bean.CategoryBean
 import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -31,5 +32,13 @@ interface ApiService {
 
     @GET("v4/tabs/follow")
     fun getFollowData():Observable<HomeBean.Issue>
+
+    /**
+     * //获取分类
+     *   http://baobab.kaiyanapp.com/api/v4/categories
+     */
+
+    @GET("v4/categories")
+    fun getCategoryData():Observable<ArrayList<CategoryBean>>
 
 }
