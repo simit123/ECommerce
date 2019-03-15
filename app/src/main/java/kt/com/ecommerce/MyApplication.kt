@@ -2,6 +2,7 @@ package kt.com.ecommerce
 
 import android.app.Application
 import android.content.Context
+import com.hazz.kotlinmvp.utils.DisplayManager
 import kotlin.properties.Delegates
 
 /**
@@ -17,6 +18,7 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        DisplayManager.init(this)
         context = applicationContext
     }
 }
